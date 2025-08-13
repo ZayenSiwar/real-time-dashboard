@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`LineChart Component matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="line-chart"
+  >
+    <div
+      data-testid="chart-data"
+    >
+      {"labels":["Lun","Mar","Mer","Jeu","Ven","Sam","Dim"],"datasets":[{"label":"Utilisateurs actifs","data":[12,19,3,5,2,3,15],"borderColor":"rgb(75, 192, 192)","backgroundColor":"rgba(75, 192, 192, 0.5)"}]}
+    </div>
+    <div
+      data-testid="chart-options"
+    >
+      {"responsive":true,"plugins":{"legend":{"position":"top"},"title":{"display":true,"text":"Statistiques hebdomadaires"}}}
+    </div>
+  </div>
+</DocumentFragment>
+`;
