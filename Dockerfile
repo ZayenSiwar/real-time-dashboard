@@ -1,25 +1,23 @@
-# Dockerfile
+# Étape 1 : Build
+FROM node:22-alpine AS build
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm install --production=false
+
+COPY . .
+RUN npm run build
+
+# Étape 2 : Image finale
 FROM node:22-alpine
 
 WORKDIR /app
 
-# Copie les fichiers nécessaires
-COPY package*.json ./
-
-# Installe les dépendances
-RUN npm install
-
-# Copie le reste du code
-COPY . .
-
-# Build l'app
-RUN npm run build
-
-# Expose le port
-EXPOSE 5173
-
-# Installe serve pour servir le build statique
+# Installer serve uniquement
 RUN npm install -g serve
 
-# Lance le serveur
+COPY --from=build /app/dist ./dist
+
+EXPOSE 5173
 CMD ["serve", "-s", "dist"]
